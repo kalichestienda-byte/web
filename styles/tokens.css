@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Overlay inmersivo: Fondo oscuro profundo en la izquierda para el texto, 
+     desvaneciéndose hacia la derecha para revelar la foto 'hero.webp' de la taza */
+  .bg-hero-overlay {
+    background: linear-gradient(90deg, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.85) 45%, rgba(15,15,15,0.2) 100%);
+  }
+
+  /* Adaptación en móvil: El texto va arriba oscuro, la foto se revela abajo */
+  @media (max-width: 1023px) {
+    .bg-hero-overlay {
+      background: linear-gradient(180deg, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.90) 50%, rgba(15,15,15,0.4) 100%);
+    }
+  }
+
+  /* El pedestal impecable blanco donde se anidará tu bolsa 'pack.webp' */
+  .premium-pack-frame {
+    background-color: #FFFFFF;
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Panel técnico elegante tipo cristal oscuro para textos de apoyo */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -240,14 +240,17 @@ export const siteConfig: SiteConfig = {
       "Sección 7: Claro (Footer institucional)"
     ]
   },
-  navigation: {
+ navigation: {
     items: [
       { label: "Inicio", href: "/" },
       { label: "Productos", href: "#productos" },
       { label: "Propuesta de Valor", href: "#valores" },
       { label: "Nuestra Historia", href: "#historia" },
-      { label: "Contacto", href: "#contacto" },
-      { label: "Restaurantes y Cafeterías", href: "#distribuidores" }
+      // CORRECCIÓN: Enlace directo y limpio a WhatsApp con mensaje predeterminado
+      { 
+        label: "Contacto", 
+        href: "https://wa.me/523113768591?text=Hola,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20productos%20de%20Kaliche's" 
+      }
     ],
     primaryCta: {
       label: "Ver tienda",

@@ -24,7 +24,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-[58vh] sm:h-[64vh] lg:h-[74vh] max-h-[820px] overflow-hidden bg-[#0F0F0F]"
+      className="relative w-full min-h-[50vh] sm:min-h-[55vh] lg:min-h-[65vh] xl:min-h-[72vh] max-h-[820px] overflow-hidden bg-[#0F0F0F]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -38,11 +38,7 @@ export default function HeroSection() {
               isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            {/* ── IMAGEN DE FONDO: ocupa TODO el ancho ──────────────
-                Sin recorte izquierdo. La imagen respira de borde
-                a borde. Los gradientes encima crean la zona de
-                lectura — no un bloque negro separado.
-            ───────────────────────────────────────────────────────── */}
+            {/* ── FONDO: las hero.webp originales ── */}
             <img
               src={product.images.hero.src}
               alt=""
@@ -52,52 +48,42 @@ export default function HeroSection() {
               }`}
             />
 
-            {/* ── CAPAS DE GRADIENTE ────────────────────────────────
-                Tres gradientes que trabajan juntos:
-                1. Lateral izquierdo — zona de lectura del copy
-                2. Inferior — ancla copy y controles
-                3. Oscurecimiento global muy suave — solo para que
-                   los colores no saturen, sin matar la imagen
-            ───────────────────────────────────────────────────────── */}
-
-            {/* 1. Gradiente lateral izquierdo — desktop */}
-            {/* Crea la zona oscura donde vive el copy de forma orgánica */}
-            <div className="absolute inset-0 hidden lg:block"
+            {/* Gradiente lateral izquierdo — desktop */}
+            <div
+              className="absolute inset-0 hidden lg:block"
               style={{
                 background: 'linear-gradient(to right, rgba(15,15,15,0.97) 0%, rgba(15,15,15,0.85) 22%, rgba(15,15,15,0.55) 38%, rgba(15,15,15,0.15) 55%, transparent 72%)'
               }}
             />
 
-            {/* 1b. Gradiente lateral — móvil (más agresivo verticalmente) */}
-            <div className="absolute inset-0 lg:hidden"
+            {/* Gradiente vertical — móvil y tablet */}
+            <div
+              className="absolute inset-0 lg:hidden"
               style={{
                 background: 'linear-gradient(to top, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.75) 40%, rgba(15,15,15,0.35) 70%, transparent 100%)'
               }}
             />
 
-            {/* 2. Gradiente inferior — desktop + móvil */}
-            <div className="absolute inset-0"
+            {/* Gradiente inferior — todas las pantallas */}
+            <div
+              className="absolute inset-0"
               style={{
                 background: 'linear-gradient(to top, rgba(15,15,15,0.92) 0%, rgba(15,15,15,0.6) 20%, rgba(15,15,15,0.2) 40%, transparent 60%)'
               }}
             />
 
-            {/* 3. Oscurecimiento global muy suave — solo 10% */}
-            {/* Evita que la imagen sature sin apagarla */}
-            <div className="absolute inset-0 bg-black/10" />
+            {/* ── LAYOUT ── */}
+            <div className="relative z-20 w-full h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-end lg:items-center pb-14 sm:pb-12 lg:pb-0 pt-20 sm:pt-16 lg:pt-0">
+              <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
 
-            {/* ── LAYOUT INTERIOR ──────────────────────────────────── */}
-            <div className="absolute inset-0 z-20 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-end lg:items-center pb-10 lg:pb-0">
-              <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between">
-
-                {/* ── ZONA A: COPY ─────────────────────────────────── */}
+                {/* ── COPY ── */}
                 <div
-                  className={`w-full lg:w-[44%] flex flex-col items-start transition-all duration-1000 delay-200 ${
+                  className={`w-full lg:w-[44%] xl:w-[42%] flex flex-col items-start transition-all duration-1000 delay-200 ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                   }`}
                 >
                   {/* Badge */}
-                  <div className="flex items-center gap-2 mb-3 lg:mb-4">
+                  <div className="flex items-center gap-2 mb-2 lg:mb-3">
                     <span className="font-sans text-[10px] font-bold uppercase tracking-[0.28em] text-[#E31E24]">
                       {product.featured ? product.label : 'Línea Instantánea'}
                     </span>
@@ -108,22 +94,22 @@ export default function HeroSection() {
                   </div>
 
                   {/* Headline */}
-                  <h1 className="font-sans text-[2.4rem] sm:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] font-black uppercase tracking-tighter text-white leading-[0.88] mb-3 lg:mb-4">
+                  <h1 className="font-sans text-3xl sm:text-4xl lg:text-5xl xl:text-[3.6rem] 2xl:text-[4.2rem] font-black uppercase tracking-tighter text-white leading-[0.88] mb-2 lg:mb-3">
                     {product.name}
                   </h1>
 
                   {/* Tagline rojo */}
-                  <p className="font-sans text-[11px] font-bold text-[#E31E24] tracking-[0.22em] uppercase mb-4 lg:mb-5">
+                  <p className="font-sans text-[10px] sm:text-[11px] font-bold text-[#E31E24] tracking-[0.22em] uppercase mb-3 lg:mb-4">
                     {product.tagline}
                   </p>
 
-                  {/* Descripción — solo desktop */}
-                  <p className="hidden lg:block font-sans text-[13px] text-white/50 leading-[1.85] mb-6 font-light max-w-[340px] line-clamp-2">
+                  {/* Descripción — solo xl+ */}
+                  <p className="hidden xl:block font-sans text-[13px] text-white/50 leading-[1.85] mb-5 font-light max-w-[340px] line-clamp-2">
                     {product.description}
                   </p>
 
-                  {/* Panel técnico — solo desktop */}
-                  <div className="hidden lg:block bg-white/[0.04] border border-white/[0.07] p-5 w-full max-w-[340px] mb-8 rounded-xl backdrop-blur-sm">
+                  {/* Panel técnico — solo xl+ */}
+                  <div className="hidden xl:block bg-white/[0.04] border border-white/[0.07] p-4 w-full max-w-[320px] mb-6 rounded-xl backdrop-blur-sm">
                     <div className="flex items-start gap-3 mb-3 pb-3 border-b border-white/[0.07]">
                       <div className="w-1 h-1 rounded-full bg-[#E31E24] mt-[7px] flex-shrink-0" />
                       <div>
@@ -162,7 +148,7 @@ export default function HeroSection() {
                       href={siteConfig.hero.secondaryCta.href}
                       variant="outline"
                       size="lg"
-className="bg-white/10 border-white text-white font-bold hover:bg-white hover:text-[#0F0F0F] transition-all duration-200 hidden sm:inline-flex backdrop-blur-sm"
+                      className="bg-white/10 border-white text-white font-bold hover:bg-white hover:text-[#0F0F0F] transition-all duration-200 hidden sm:inline-flex backdrop-blur-sm"
                       external
                     >
                       {siteConfig.hero.secondaryCta.label}
@@ -170,24 +156,23 @@ className="bg-white/10 border-white text-white font-bold hover:bg-white hover:te
                   </div>
                 </div>
 
-                {/* ── ZONA B: PEDESTAL DEL PACK — solo desktop ─────── */}
+                {/* ── PEDESTAL: fotos nuevas hero-banner.jpg — solo lg+ ── */}
                 <div
-                  className={`hidden lg:flex lg:w-[42%] justify-center items-center transition-all duration-[1.2s] delay-500 ${
+                  className={`hidden lg:flex lg:w-[46%] justify-center items-center transition-all duration-[1.2s] delay-500 ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}
                 >
-                  <div className="relative w-[190px] xl:w-[220px] 2xl:w-[250px] aspect-[3/4] bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.05)]">
+                  <div className="relative w-full max-w-[380px] xl:max-w-[440px] 2xl:max-w-[500px] aspect-[4/3] bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.05)]">
                     <img
-                      src={product.images.pack.src}
-                      alt={product.images.pack.alt}
-                      className="w-[84%] h-[84%] object-contain mix-blend-multiply transition-transform duration-[2s] ease-out hover:scale-105"
+                      src={product.images.heroBanner.src}
+                      alt={product.images.heroBanner.alt}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
 
               </div>
             </div>
-
           </div>
         );
       })}
@@ -195,8 +180,6 @@ className="bg-white/10 border-white text-white font-bold hover:bg-white hover:te
       {/* ── CONTROLES ── */}
       <div className="absolute bottom-3 right-0 z-30 w-full pointer-events-none">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-end gap-3 pointer-events-auto">
-
-          {/* Dots */}
           <div className="flex items-center gap-2">
             {products.map((_, idx) => (
               <button
@@ -211,8 +194,6 @@ className="bg-white/10 border-white text-white font-bold hover:bg-white hover:te
               />
             ))}
           </div>
-
-          {/* Flechas */}
           <div className="flex items-center gap-1.5">
             <button
               onClick={prevSlide}
@@ -229,7 +210,6 @@ className="bg-white/10 border-white text-white font-bold hover:bg-white hover:te
               →
             </button>
           </div>
-
         </div>
       </div>
 

@@ -72,6 +72,7 @@ export interface HeroConfig {
 }
 
 export interface ProductImages {
+  heroBanner: { src: string; alt: string };
   hero: { src: string; alt: string };
   pack: { src: string; alt: string };
   lifestyle: { src: string; alt: string };
@@ -187,7 +188,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   brand: {
     name: "KALICHE'S",
-    owner: "Julián Andrés Orozco Machuca",
+    owner: "Kaliches",
     slogan: "Kaliches es para todos",
     description: "Marca moderna de cappuccino e instantáneos saborizados. La alternativa indulgente, cremosa y lista al instante.",
     positioning: "Cappuccino instantáneo cremoso sabor caramelo, listo al instante, con gran rendimiento y estilo de marca propio."
@@ -245,12 +246,13 @@ export const siteConfig: SiteConfig = {
       { label: "Productos", href: "#productos" },
       { label: "Propuesta de Valor", href: "#valores" },
       { label: "Nuestra Historia", href: "#historia" },
-      { label: "Contacto", href: "#contacto" }
+      { label: "Contacto", href: "#contacto" },
+      { label: "Restaurantes y Cafeterías", href: "#distribuidores" }
     ],
     primaryCta: {
       label: "Ver tienda",
-      href: "#",
-      isExternal: false
+      href: "https://wa.me/523113768591?text=Hola, me interesa comprar productos Kaliche's",
+      isExternal: true
     }
   },
   hero: {
@@ -258,11 +260,11 @@ export const siteConfig: SiteConfig = {
     subtitle: "Cremoso, delicioso y listo al instante. Bolsa de 300g que rinde hasta 13 tazas.",
     primaryCta: {
       label: "Comprar ahora",
-      href: "#"
+      href: "https://wa.me/523113768591?text=Hola, quiero comprar Kaliche's"
     },
     secondaryCta: {
       label: "Escríbenos por WhatsApp",
-      href: "https://wa.me/523113768591"
+      href: "https://wa.me/523113768591?text=Hola, me interesa conocer más sobre Kaliche's"
     },
     badges: ["Bolsa de 300g", "Rinde hasta 13 tazas", "Sabor Caramelo", "Listo al instante"],
     image: "/images/products/cappuccino-caramelo/hero.webp"
@@ -294,8 +296,9 @@ export const siteConfig: SiteConfig = {
         boxQuantity: 6,
         labels: ["Exceso de calorías", "Exceso de azúcares"],
         featured: false,
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Café con Leche Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cafe-con-leche/hero-banner.jpg", alt: "Café con Leche Kaliche's" },
           hero: { src: "/images/products/cafe-con-leche/hero.webp", alt: "Taza de Café con Leche Kaliche's humeante" },
           pack: { src: "/images/products/cafe-con-leche/pack.webp", alt: "Empaque de Café con Leche Kaliche's 300g" },
           lifestyle: { src: "/images/products/cafe-con-leche/lifestyle.webp", alt: "Momento de consumo de Café con Leche por la mañana" }
@@ -310,8 +313,8 @@ export const siteConfig: SiteConfig = {
         tagline: "Intensidad y frescura que se disuelven al instante en frío",
         description: "Café soluble finamente procesado para una disolución óptima en líquidos a baja temperatura. Destaca por su color oscuro profundo y aroma tostado característico de un buen grano.",
         presentation: "Bolsa de 120g",
-        servingSize: "2 cucharadas (25g) por porción",
-        preparation: "Agregar dos cucharadas (25g) en 150 ml de agua o leche fría, mezclar y disfrutar.",
+        servingSize: "2 cucharadas (3g) por porción",
+        preparation: "Agregar dos cucharadas (3g) en 150 ml de agua o leche fría, mezclar y disfrutar.",
         yieldText: "Rinde de forma óptima",
         flavorProfile: "Café soluble fino de color oscuro, sabor amargo característico bien definido, olor intenso y tostado.",
         storage: "Consérvese en un lugar fresco y seco",
@@ -319,8 +322,9 @@ export const siteConfig: SiteConfig = {
         boxQuantity: 6,
         labels: [],
         featured: false,
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Café Frío Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cafe-frio/hero-banner.jpg", alt: "Café Frío Kaliche's" },
           hero: { src: "/images/products/cafe-frio/hero.webp", alt: "Vaso de Café Frío Kaliche's con hielos" },
           pack: { src: "/images/products/cafe-frio/pack.webp", alt: "Empaque de Café Frío Kaliche's 120g" },
           lifestyle: { src: "/images/products/cafe-frio/lifestyle.webp", alt: "Bebida de Café Frío disfrutándose en una tarde de calor" }
@@ -344,8 +348,9 @@ export const siteConfig: SiteConfig = {
         boxQuantity: 6,
         labels: ["Exceso de calorías", "Exceso de azúcares"],
         featured: false,
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Cappuccino Clásico Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cappuccino/hero-banner.jpg", alt: "Cappuccino Clásico Kaliche's" },
           hero: { src: "/images/products/cappuccino/hero.webp", alt: "Taza transparente de Cappuccino Clásico Kaliche's" },
           pack: { src: "/images/products/cappuccino/pack.webp", alt: "Empaque de Cappuccino Clásico Kaliche's 300g" },
           lifestyle: { src: "/images/products/cappuccino/lifestyle.webp", alt: "Taza de cappuccino en un espacio de escritorio" }
@@ -370,8 +375,9 @@ export const siteConfig: SiteConfig = {
         labels: ["Exceso de calorías", "Exceso de azúcares"],
         featured: true,
         label: "Producto estrella",
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Cappuccino Caramelo Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cappuccino-caramelo/hero-banner.jpg", alt: "Cappuccino Caramelo Kaliche's" },
           hero: { src: "/images/products/cappuccino-caramelo/hero.webp", alt: "Cappuccino Caramelo Kaliche's con hilos de caramelo visuales" },
           pack: { src: "/images/products/cappuccino-caramelo/pack.webp", alt: "Bolsa de 300g de Cappuccino Caramelo Kaliche's" },
           lifestyle: { src: "/images/products/cappuccino-caramelo/lifestyle.webp", alt: "Taza de Cappuccino Caramelo servida en una mesa familiar" }
@@ -395,8 +401,9 @@ export const siteConfig: SiteConfig = {
         boxQuantity: 6,
         labels: ["Exceso de calorías"],
         featured: false,
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Cappuccino Sin Azúcar Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cappuccino-sin-azucar/hero-banner.jpg", alt: "Cappuccino Sin Azúcar Kaliche's" },
           hero: { src: "/images/products/cappuccino-sin-azucar/hero.webp", alt: "Cappuccino Sin Azúcar Kaliche's en taza de porcelana" },
           pack: { src: "/images/products/cappuccino-sin-azucar/pack.webp", alt: "Empaque de Cappuccino Sin Azúcar Kaliche's 300g" },
           lifestyle: { src: "/images/products/cappuccino-sin-azucar/lifestyle.webp", alt: "Momento de consumo de cappuccino en la oficina" }
@@ -420,8 +427,9 @@ export const siteConfig: SiteConfig = {
         boxQuantity: 6,
         labels: ["Exceso de calorías", "Exceso de azúcares"],
         featured: false,
-        cta: { label: "Comprar ahora", href: "#" },
+        cta: { label: "Comprar ahora", href: "https://wa.me/523113768591?text=Hola, quiero comprar Cappuccino Vainilla Kaliche's" },
         images: {
+          heroBanner: { src: "/images/products/cappuccino-vainilla/hero-banner.jpg", alt: "Cappuccino Vainilla Kaliche's" },
           hero: { src: "/images/products/cappuccino-vainilla/hero.webp", alt: "Taza de Cappuccino Vainilla Kaliche's con detalles de espuma" },
           pack: { src: "/images/products/cappuccino-vainilla/pack.webp", alt: "Empaque de Cappuccino Vainilla Kaliche's 300g" },
           lifestyle: { src: "/images/products/cappuccino-vainilla/lifestyle.webp", alt: "Taza de cappuccino en una merienda por la tarde" }
@@ -467,12 +475,12 @@ export const siteConfig: SiteConfig = {
   finalCta: {
     title: "¿Listo para cambiar tu café de siempre?",
     subtitle: "Prueba el verdadero sabor y cremosidad del Cappuccino Caramelo. Disponible ahora.",
-    primaryCta: { label: "Ver tienda online", href: "#" },
-    secondaryCta: { label: "Preguntar por WhatsApp", href: "https://wa.me/523113768591" }
+    primaryCta: { label: "Ver tienda online", href: "https://wa.me/523113768591?text=Hola, quiero comprar productos Kaliche's" },
+    secondaryCta: { label: "Preguntar por WhatsApp", href: "https://wa.me/523113768591?text=Hola, tengo una pregunta sobre Kaliche's" }
   },
   footer: {
     description: "Kaliche's - Marca de consumo de cappuccino instantáneo cremoso. Elevando los estándares del café diario.",
     links: [{ label: "Inicio", href: "/" }, { label: "Productos", href: "#productos" }, { label: "Contacto", href: "#contacto" }],
-    legalText: "© 2026 KALICHE'S. Todos los derechos reservados. Propiedad de Julián Andrés Orozco Machuca. Loma de Rosales 31, Fracc. Lomas del Encanto, Tepic, Nayarit."
+    legalText: "© 2026 KALICHE'S. Todos los derechos reservados. Propiedad de Kaliches. Loma de Rosales 31, Fracc. Lomas del Encanto, Tepic, Nayarit."
   }
 };

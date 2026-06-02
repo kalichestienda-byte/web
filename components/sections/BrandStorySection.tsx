@@ -8,7 +8,7 @@ export default function BrandStorySection() {
 
   // Imagen editorial de marca — usa el hero de cappuccino caramelo
   // que es el producto estrella y tiene la iluminación más editorial
-  const imageSrc = "/images/products/cappuccino-caramelo/hero.webp";
+  const imageSrc = "/images/products/cappuccino-caramelo/heronuevo.webp";
 
   return (
     <Section id="historia" variant="dark" className="relative overflow-hidden">

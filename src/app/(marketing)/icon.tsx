@@ -1,30 +1,46 @@
 import { ImageResponse } from "next/og";
 
+export const runtime = "edge";
+
+// El tamaño estándar para favicons en el ecosistema moderno de Google
 export const size = {
-  width: 32,
-  height: 32,
+  width: 48,
+  height: 48,
 };
 
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  // Obtenemos la URL absoluta del asset interno para que funcione tanto local como en Vercel
+  const iconUrl = new URL(
+    "../../../public/images/logo/icono.png",
+    import.meta.url
+  ).toString();
+
+  // Leemos el archivo físico de la imagen
+  const iconData = await fetch(iconUrl).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
         style={{
           width: "100%",
           height: "100%",
-          background: "#E31E24",
-          color: "#FFFFFF",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 22,
-          fontWeight: 900,
-          fontFamily: "Arial, sans-serif",
+          backgroundColor: "transparent", 
         }}
       >
-        K
+        <img
+          /* @ts-ignore */
+          src={iconData}
+          width="100%"
+          height="100%"
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </div>
     ),
     {

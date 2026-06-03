@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { siteConfig } from '../../content/site.config';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
@@ -23,6 +24,9 @@ export default function NavbarSection() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  // Links regulares sin el de distribuidores
+  const regularLinks = navigation.items.filter(item => item.href !== '#distribuidores');
+
   return (
     <>
       <header className={`sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md transition-all border-b ${scrolled ? 'border-[#E8E8E8] shadow-sm' : 'border-transparent'}`}>
@@ -30,7 +34,7 @@ export default function NavbarSection() {
           <div className="flex h-20 items-center justify-between gap-4">
 
             {/* Logotipo */}
-            <a href="/" className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#E31E24]">
+            <Link href="/" className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#E31E24]">
               <img
                 src="/images/logo/icono.png"
                 alt={`Logo de ${brand.name}`}
@@ -39,11 +43,11 @@ export default function NavbarSection() {
               <span className="font-sans font-black text-xl tracking-tighter text-[#0F0F0F] sm:text-2xl">
                 {brand.name}
               </span>
-            </a>
+            </Link>
 
             {/* Navegación Desktop */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navigation.items.map((item, index) => (
+            <nav className="hidden lg:flex items-center gap-7">
+              {regularLinks.map((item, index) => (
                 <a
                   key={index}
                   href={item.href}
@@ -52,6 +56,13 @@ export default function NavbarSection() {
                   {item.label}
                 </a>
               ))}
+              {/* Botón destacado cafeterías */}
+              <a
+                href="#distribuidores"
+                className="font-sans text-xs uppercase tracking-widest font-bold text-[#E31E24] border border-[#E31E24] px-3 py-1.5 hover:bg-[#E31E24] hover:text-white transition-all duration-200"
+              >
+                Restaurantes y Cafeterías
+              </a>
             </nav>
 
             {/* CTA + Hamburger */}
@@ -112,16 +123,25 @@ export default function NavbarSection() {
 
         {/* Links */}
         <nav className="flex flex-col flex-1 px-6 py-8 gap-1 overflow-y-auto">
-          {navigation.items.map((item, index) => (
+          {regularLinks.map((item, index) => (
             <a
               key={index}
               href={item.href}
               onClick={closeMenu}
-              className="font-sans text-[13px] font-bold uppercase tracking-[0.16em] text-[#1A1A1A] hover:text-[#E31E24] py-4 border-b border-[#F0F0F0] transition-colors duration-150 last:border-b-0"
+              className="font-sans text-[13px] font-bold uppercase tracking-[0.16em] text-[#1A1A1A] hover:text-[#E31E24] py-4 border-b border-[#F0F0F0] transition-colors duration-150"
             >
               {item.label}
             </a>
           ))}
+          {/* Botón destacado cafeterías — móvil */}
+          <a
+            href="#distribuidores"
+            onClick={closeMenu}
+            className="font-sans text-[13px] font-bold uppercase tracking-[0.16em] text-[#E31E24] py-4 border-b border-[#E31E24]/20 transition-colors duration-150 flex items-center gap-2"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24] flex-shrink-0" />
+            Restaurantes y Cafeterías
+          </a>
         </nav>
 
         {/* CTA + contacto */}
